@@ -3,11 +3,16 @@
   "version": "4.12.5",
   "description": "Yet another matrix client",
   "main": "index.js",
+  "packageManager": "pnpm@11.1.3",
+  "volta": {
+    "node": "22.22.3",
+    "pnpm": "11.1.3"
+  },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=22.0.0 <23"
   },
   "scripts": {
-    "tauri": "shx cp config.json cinny/ && tauri",
+    "tauri": "node scripts/prepare-frontend.mjs && tauri",
     "release": "node scripts/release.mjs",
     "bump": "node scripts/update-version.mjs"
   },
@@ -15,6 +20,7 @@
   "author": "Ajay Bura",
   "license": "AGPL-3.0-only",
   "dependencies": {
+    "@matrix-org/matrix-sdk-crypto-wasm": "18.3.1",
     "@tauri-apps/api": "2.7.0",
     "@tauri-apps/plugin-clipboard-manager": "2.3.0",
     "@tauri-apps/plugin-dialog": "2.3.2",
@@ -25,7 +31,8 @@
     "@tauri-apps/plugin-os": "2.3.0",
     "@tauri-apps/plugin-process": "2.3.0",
     "@tauri-apps/plugin-shell": "2.3.0",
-    "@tauri-apps/plugin-updater": "2.9.0"
+    "@tauri-apps/plugin-updater": "2.9.0",
+    "events": "3.3.0"
   },
   "devDependencies": {
     "@actions/github": "9.1.1",

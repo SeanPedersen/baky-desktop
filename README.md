@@ -27,13 +27,12 @@ Firstly, to setup Rust, NodeJS and build tools follow [Tauri documentation](http
 
 Now, to setup development locally run the following commands:
 * `git clone --recursive https://github.com/cinnyapp/cinny-desktop.git`
-* `cd cinny-desktop/cinny`
-* `npm ci`
-* `cd ..`
-* `npm ci`
+* `cd cinny-desktop`
+* `corepack enable`
+* `pnpm install --frozen-lockfile`
 
 To build the app locally, run:
-* `npm run tauri build`
+* `pnpm tauri build --config '{"bundle":{"createUpdaterArtifacts":false}}'`
 
 To start local dev server, run:
-* `npm run tauri dev`
+* `pnpm tauri dev`

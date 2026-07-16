@@ -17,12 +17,12 @@ jobs:
         with:
           node-version-file: ".node-version"
           package-manager-cache: false
+      - name: Enable pnpm
+        run: corepack enable
       - name: Install Rust stable
         uses: dtolnay/rust-toolchain@stable # They use branch based releases
-      - name: Install cinny dependencies
-        run: cd cinny && npm ci
-      - name: Install tauri dependencies
-        run: npm ci
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
       - name: Disble updater
         run: git apply 0001-disable-tauri-updater.patch
       - name: Build desktop app with Tauri

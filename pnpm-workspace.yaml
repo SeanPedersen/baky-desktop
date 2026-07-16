@@ -1,0 +1,8 @@
+packages:
+  - cinny
+
+allowBuilds:
+  '@swc/core': true
+  canvas: true
+  core-js-pure: true
+  esbuild: true

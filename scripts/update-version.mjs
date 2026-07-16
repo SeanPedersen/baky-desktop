@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { execSync } from "child_process";
+import { execFileSync, execSync } from "child_process";
 
 const version = process.argv[2];
 
@@ -11,11 +11,11 @@ if (!version) {
 
 console.log(`Preparing release ${version}`);
 
-// 1. Update npm versions
-execSync(`npm version ${version} --no-git-tag-version`, {
+// 1. Update package version
+execFileSync("pnpm", ["version", version, "--no-git-tag-version"], {
   stdio: "inherit"
 });
-console.log(`Updated package.json and package-lock.json -> ${version}`);
+console.log(`Updated package.json -> ${version}`);
 
 // 2. Update Cargo.toml
 const cargoToml = "src-tauri/Cargo.toml";
